@@ -1,20 +1,76 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import React from "react";
+
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Searchscreen from "./src/Screens/SearchScreen";
+import Homescreen from "./src/Screens/HomeScreen";
+import Idshowscreen from "./src/Screens/IdShowScreen";
+
+const Stack = createNativeStackNavigator();
+
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+return (
+
+<NavigationContainer>
+
+<Stack.Navigator initialRouteName="Home">
+
+<Stack.Screen name="Home" 
+component={Homescreen}
+options={{
+    title:'Home',
+    headerStyle:{
+      backgroundColor:"#6FB1CD",
+    },
+    headerTintColor:"blue",
+    headerTintStyle: {
+      fontWeight:'bold',
+
+    },
+
+}}
+ />
+ <Stack.Screen name="Search" 
+ component={Searchscreen}
+ options={{
+  title:'Your List',
+  headerStyle:{
+    backgroundColor:"#6FB1CD",
   },
-});
+  headerTintColor:"blue",
+  headerTintStyle: {
+    fontWeight:'bold',
+
+  },
+
+}}
+  />
+
+<Stack.Screen name="IdScreen" 
+ component={Idshowscreen}
+ options={{
+  title:'Your choice',
+  headerStyle:{
+    backgroundColor:"#6FB1CD",
+  },
+  headerTintColor:"blue",
+  headerTintStyle: {
+    fontWeight:'bold',
+
+  },
+
+}}
+  />
+
+</Stack.Navigator>
+
+</NavigationContainer>
+
+);
+
+}
